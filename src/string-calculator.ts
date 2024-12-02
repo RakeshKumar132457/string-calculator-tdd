@@ -4,7 +4,11 @@ export class StringCalculator {
       return 0;
     }
     if (!numbers.includes(",") && !numbers.startsWith("//")) {
-      return parseInt(numbers);
+      const num = parseInt(numbers);
+      if (num < 0) {
+        throw new Error(`negatives not allowed: ${num}`);
+      }
+      return num;
     }
 
     let delimiter = ",";
@@ -17,9 +21,13 @@ export class StringCalculator {
     }
 
     const normalizedInput = numbersStr.replace(/\n/g, delimiter);
-    return normalizedInput
-      .split(delimiter)
-      .map((num) => parseInt(num))
-      .reduce((sum, num) => sum + num, 0);
+    const nums = normalizedInput.split(delimiter).map((num) => parseInt(num));
+
+    const negative = nums.find((n) => n < 0);
+    if (negative !== undefined) {
+      throw new Error(`negatives not allowed: ${negative}`);
+    }
+
+    return nums.reduce((sum, num) => sum + num, 0);
   }
 }
