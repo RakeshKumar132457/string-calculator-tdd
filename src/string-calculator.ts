@@ -28,6 +28,6 @@ export class StringCalculator {
       throw new Error(`negatives not allowed: ${negative.join(",")}`);
     }
 
-    return nums.reduce((sum, num) => sum + num, 0);
+    return nums.filter((num) => num <= 1000).reduce((sum, num) => sum + num, 0);
   }
 }
