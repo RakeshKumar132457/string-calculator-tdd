@@ -6,7 +6,8 @@ export class StringCalculator {
     if (!numbers.includes(",")) {
       return parseInt(numbers);
     }
-    return numbers
+    const normalizedInput = numbers.replace(/\n/g, ",");
+    return normalizedInput
       .split(",")
       .map((num) => parseInt(num))
       .reduce((sum, num) => sum + num, 0);
