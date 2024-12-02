@@ -1,8 +1,12 @@
 export class StringCalculator {
-  add(number: string): number {
-    if(number === "") {
-      return 0
+  add(numbers: string): number {
+    if (numbers === "") {
+      return 0;
     }
-    return parseInt(number);
+    if (!numbers.includes(",")) {
+      return parseInt(numbers);
+    }
+    const nums = numbers.split(",");
+    return parseInt(nums[0]) + parseInt(nums[1]);
   }
 }

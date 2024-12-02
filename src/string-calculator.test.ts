@@ -14,8 +14,7 @@ describe("String Calculator", () => {
     expect(calculator.add("1")).toBe(1);
   });
 
-  it("should return sum when two numbers are passed"),
-    () => {
-      expect(calculator.add("1,2")).toBe(3);
-    };
+  it("should return sum when two numbers are passed", () => {
+    expect(calculator.add("1,2")).toBe(3);
+  });
 });
