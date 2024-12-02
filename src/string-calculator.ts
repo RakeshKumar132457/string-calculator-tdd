@@ -3,12 +3,22 @@ export class StringCalculator {
     if (numbers === "") {
       return 0;
     }
-    if (!numbers.includes(",")) {
+    if (!numbers.includes(",") && !numbers.startsWith("//")) {
       return parseInt(numbers);
     }
-    const normalizedInput = numbers.replace(/\n/g, ",");
+
+    let delimiter = ",";
+    let numbersStr = numbers;
+
+    if (numbers.startsWith("//")) {
+      const firstNewLine = numbers.indexOf("\n");
+      delimiter = numbers.substring(2, firstNewLine);
+      numbersStr = numbers.substring(firstNewLine + 1);
+    }
+
+    const normalizedInput = numbersStr.replace(/\n/g, delimiter);
     return normalizedInput
-      .split(",")
+      .split(delimiter)
       .map((num) => parseInt(num))
       .reduce((sum, num) => sum + num, 0);
   }
