@@ -1,1 +1,5 @@
-export class StringCalculator { }
+export class StringCalculator {
+  add(number: string): number {
+    return 0;
+  }
+}
