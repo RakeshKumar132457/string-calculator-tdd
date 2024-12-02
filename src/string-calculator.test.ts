@@ -33,4 +33,10 @@ describe("String Calculator", () => {
   it("should throw an exception when negative numbers are used", () => {
     expect(() => calculator.add("-1,2")).toThrow("negatives not allowed: -1");
   });
+
+  it("should thorw an exception with all the negative numbers in the message", () => {
+    expect(() => calculator.add("-1,-2,3,-4")).toThrow(
+      "negatives not allowed: -1,-2,-4"
+    );
+  });
 });
