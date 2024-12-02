@@ -29,4 +29,8 @@ describe("String Calculator", () => {
   it("should support different delimiters", () => {
     expect(calculator.add("//;\n1;2")).toBe(3);
   });
+
+  it("should throw an exception when negative numbers are used", () => {
+    expect(calculator.add("-1,2")).toThrow("negatives not allowed: -1");
+  });
 });
