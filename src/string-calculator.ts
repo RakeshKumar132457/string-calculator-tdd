@@ -23,9 +23,9 @@ export class StringCalculator {
     const normalizedInput = numbersStr.replace(/\n/g, delimiter);
     const nums = normalizedInput.split(delimiter).map((num) => parseInt(num));
 
-    const negative = nums.find((n) => n < 0);
-    if (negative !== undefined) {
-      throw new Error(`negatives not allowed: ${negative}`);
+    const negative = nums.filter((n) => n < 0);
+    if (negative.length > 0) {
+      throw new Error(`negatives not allowed: ${negative.join(",")}`);
     }
 
     return nums.reduce((sum, num) => sum + num, 0);
