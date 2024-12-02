@@ -21,4 +21,8 @@ describe("String Calculator", () => {
   it("should handle an unknown amount of numbers", () => {
     expect(calculator.add("1,2,3,4,5")).toBe(15);
   });
+
+  it("should handle newlines between numbers", () => {
+    expect(calculator.add("1\n2,3")).toBe(6);
+  });
 });
