@@ -17,6 +17,9 @@ export class StringCalculator {
     if (numbers.startsWith("//")) {
       const firstNewLine = numbers.indexOf("\n");
       delimiter = numbers.substring(2, firstNewLine);
+      if (delimiter.startsWith("[") && delimiter.endsWith("]")) {
+        delimiter = delimiter.slice(1, -1);
+      }
       numbersStr = numbers.substring(firstNewLine + 1);
     }
 
